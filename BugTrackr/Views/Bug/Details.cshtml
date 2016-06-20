@@ -1,0 +1,50 @@
+﻿@model BugTrackr.Models.Bug
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Bug</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Priority)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Priority)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Status)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OpenDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OpenDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AssignedUserID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AssignedUserID)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.BugID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

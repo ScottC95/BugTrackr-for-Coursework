@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BugTrackr.Models.Bug>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="dropdown">
+    <button id="dropbtn">AppendText</button>
+    <div id="myDropdown" class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+</div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignedUserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OpenDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignedUserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BugID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BugID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BugID })
+        </td>
+    </tr>
+}
+
+</table>
