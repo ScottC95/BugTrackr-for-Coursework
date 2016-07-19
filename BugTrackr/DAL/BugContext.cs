@@ -15,10 +15,11 @@ namespace BugTrackr.DAL
 
         }
 
+
+
         public DbSet<User> Users { get; set; }
         public DbSet<Bug> Bugs { get; set; }
         public DbSet<BugInfo> BugInfos { get; set; }
-
         public DbSet<Site> Sites { get; set; }
 
 

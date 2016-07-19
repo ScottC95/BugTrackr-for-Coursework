@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using BugTrackr.Models;
 using BugTrackr.DAL;
+using BugTrackr.ViewModels;
 
 namespace BugTrackr.Controllers
 {
@@ -14,12 +15,27 @@ namespace BugTrackr.Controllers
     {
         private BugContext db = new BugContext();
 
+        public BugViewModel bugViewModel = new BugViewModel();
+        
+
         //
         // GET: /Bug/
 
         public ActionResult Index()
         {
-            return View(db.Bugs.ToList());
+            return RedirectToAction("SiteList");
+        }
+
+        public ActionResult SiteList()
+        {
+
+            List<Site> sites = db.Sites.ToList();
+
+            if (sites == null)
+            {
+                return HttpNotFound();
+            }
+            return View(sites);
         }
 
         //
@@ -38,7 +54,7 @@ namespace BugTrackr.Controllers
         //
         // GET: /Bug/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int siteID)
         {
             return View();
         }
@@ -113,6 +129,24 @@ namespace BugTrackr.Controllers
             db.Bugs.Remove(bug);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        //
+        // GET: /Bug/BugList
+        public ActionResult BugList(int siteID = 0)
+        {
+            BugViewModel bugsViewModel = new BugViewModel();
+
+            bugsViewModel.Sites = db.Sites.ToList();
+            bugsViewModel.Bugs = db.Bugs.Where(b => b.SiteID == siteID).ToList();
+
+            if (bugsViewModel.Bugs == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(bugsViewModel);
+
         }
 
         protected override void Dispose(bool disposing)

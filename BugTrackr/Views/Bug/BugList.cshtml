@@ -1,0 +1,63 @@
+﻿@model BugTrackr.ViewModels.BugViewModel
+
+@{
+    ViewBag.Title = "BugList";
+}
+
+<h2>BugList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bugs[0].Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bugs[0].Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bugs[0].Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bugs[0].OpenDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bugs[0].AssignedUserID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bugs[0].SiteID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var bug in Model.Bugs) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => bug.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => bug.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => bug.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => bug.OpenDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => bug.AssignedUserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => bug.SiteID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = bug.BugID }) |
+            @Html.ActionLink("Details", "Details", new { id = bug.BugID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = bug.BugID })
+        </td>
+    </tr>
+}
+
+</table>

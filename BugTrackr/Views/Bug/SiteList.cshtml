@@ -1,0 +1,26 @@
+﻿@model List<BugTrackr.Models.Site>
+
+@{
+    ViewBag.Title = "BugList";
+}
+
+<h2>BugList</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model[0].SiteName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var site in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(site.SiteName.ToString(), "BugList", new { siteID = site.SiteID })
+            </td>
+        </tr>
+    }
+
+</table>

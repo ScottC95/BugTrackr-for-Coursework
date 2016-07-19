@@ -43,6 +43,13 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.AssignedUserID)
     </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SiteID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SiteID)
+    </div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.BugID }) |

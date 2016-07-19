@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BugTrackr.Models.Site>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(@Html.DisplayFor(modelItem => item.SiteName).ToString(), "BugList", new { siteID = item.SiteID })
+            </td>
+        </tr>
+    }
+
+</table>
+
